@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table{
+        border: solid 1px black;
+        text-align: center;
+    }
+</style>
+<body>
+    <table >
+        <thead>
+            <tr>
+                <th>Vezetéknév</th>
+                <th>Keresztnév</th>
+                <th>Fizetés</th>
+            </tr>
+        </thead>
+        <tbody id="male">
+
+        </tbody>
+    </table>
+    <table >
+        <thead>
+            <tr>
+                <th>Vezetéknév</th>
+                <th>Keresztnév</th>
+                <th>Fizetés</th>
+            </tr>
+        </thead>
+        <tbody id="female">
+
+        </tbody>
+    </table>
+    <script>
+        let alkalmazottak=[
+
+{ "firstName": "Nagy",
+
+"lastName": "Péter",
+
+"gender": "male",
+
+"salary": 50000
+
+},
+
+{
+
+"firstName": "Kiss",
+
+"lastName": "Viktória",
+
+"gender": "female",
+
+"salary": 400000
+
+},
+
+{ "firstName": "Pál",
+
+"lastName": "Marci",
+
+"gender": "male",
+
+"salary": 500000
+
+},
+
+{
+
+"firstName": "Kincses",
+
+"lastName": "Viola",
+
+"gender": "female",
+
+"salary": 300000
+
+},
+
+{ "firstName": "Német",
+
+"lastName": "Tamás",
+
+"gender": "male",
+
+"salary": 200000
+
+},
+
+{
+
+"firstName": "Kelemen",
+
+"lastName": "Anna",
+
+"gender": "female",
+
+"salary": 350000
+
+}
+
+]
+    let ManSal = 0, WomanSal = 0, ManCount = 0,WomanCount = 0;
+    alkalmazottak.forEach(items=>{
+        if(items.gender == "male"){
+        document.getElementById("male").innerHTML += `<td>${items.firstName}</td><td>${items.lastName}</td><td>${items.salary}</td>`
+        ManSal += items.salary;
+        ManCount++;
+        }
+        if(items.gender == "female"){
+        document.getElementById("female").innerHTML += `<td>${items.firstName}</td><td>${items.lastName}</td><td>${items.salary}</td>`
+        WomanSal += items.salary
+        WomanCount++;
+        }
+    })
+    document.getElementById("male").innerHTML += `<td colspan="2">Átlag Fizetés</td><td>${(ManSal/ManCount).toFixed(0)}</td>`
+    document.getElementById("female").innerHTML += `<td colspan="2">Átlag Fizetés</td><td>${(WomanSal/WomanCount).toFixed(0)}</td>`
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul></ul>
+    <script>
+        const uID = Math.random().toString(36).slice(2);
+        console.log(uID);
+        let arr = ["one","two","three","four","five"];
+        let arr2 = [1,2,3,4,5];
+                    // Element | index
+        arr.forEach((items,index)=>{
+          console.log(items, index)
+        });
+
+        let arr3 = []
+        for(let i of arr2){
+            if(i%2 == 0)
+            arr3.push(i)
+        }
+
+        arr3.forEach(items=>{
+            console.log(items)
+        });
+        
+        console.log(arr2.filter(items=>{items%2==0}))
+
+        let over10 = [];
+        for(let i = 0;i<100;i++){
+            let x = Math.ceil(Math.random()*50);
+            if(x > 10)
+            over10.push(x)
+        }
+        let contains = arr2.find(items=>items == 1)
+        contains ? console.log("Benne van") : console.log("nincs benne");
+        
+        //findindex
+        let van = arr2.findIndex(items=>items == 5)
+        console.log(van!=-1 ? `index of 3: ${van}`:'undefined');
+
+        //map
+        let newArr = over10.map(items=>
+            `<li>${items}</li>`
+        )
+        newArr.forEach(items=>
+        document.querySelector('ul').innerHTML += items
+        );
+
+        let sum = 0;
+        over10.forEach(items=>sum+=items)
+        document.querySelector('ul').innerHTML += `<li>sum: ${sum}</li>`;
+
+        let listr2 = over10.reduce((acc,index)=>
+            acc+`<li>${index}</li>`,''
+        )
+
+        
+    </script>
+</body>
+</html>

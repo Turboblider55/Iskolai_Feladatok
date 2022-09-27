@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <form action="">
+        <select name="" id="user" onchange="show(this)">
+           <option value="0">
+                Válassz...
+           </option>
+        </select>
+    </form>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>car</th>
+        </tr>
+        </thead>
+        <tbody>
+
+
+        </tbody>
+    </table>
+    <script>
+        let users = [{ id:1 , name: "John", age: 30, car: null },
+
+                     { id:2 , name: "Carlos", age: 25, car: "Toyota" },
+
+                     { id:3 , name: "Brendan", age: 65, car: "BMW" },
+
+                     { id:4 , name: "Carol", age: 34, car: "Mercedez" },
+
+                     { id:5, name: "Conway", age: 36, car: "Mazda" }]
+        
+        let OptionStr = users.map(items=>
+           `<option value="${items.id}">${items.name}</option>`
+        )
+        OptionStr.join("");
+        document.querySelector("select").innerHTML += OptionStr;
+
+        let show = (dat)=>{
+            let SelectedUser = users.find(user=>user.id == dat.value)
+            document.querySelector("tbody").innerHTML += `<td>${SelectedUser.id}</td><td>${SelectedUser.name}</td><td>${SelectedUser.age}</td><td>${SelectedUser.car}</td>`
+        }
+
+        
+
+
+
+
+    </script>
+</body>
+</html>

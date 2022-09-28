@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sorting</title>
+</head>
+<body>
+    <script>
+        let Arr1 = ['alma','körte','dinnye','barack','cseresznye','szilva','szőlő']
+        let Arr2 = [1,40,5,0,5,4,8,6,5,3,45,5265,747,56,42];
+
+        console.log("Eredeti Arr1: "+Arr1);
+        console.log("Eredeti Arr2: "+Arr2);
+
+        console.log("Szortírozott Arr1: "+Arr1.sort());
+        console.log("Szortírozott Arr2: "+Arr2.sort());
+
+        console.log('Növekvő Arr2: '+Arr2.sort((a,b)=> a - b))
+        console.log('Csökkenyő Arr2: '+Arr2.sort((a,b)=> b - a))
+
+        console.log('ABC sorrend Arr1: '+Arr1.sort((a,b)=>a > b ? 1:-1))
+        console.log('fordított ABC sorrend Arr1: '+Arr1.sort((a,b)=>b > a ? 1:-1))
+
+        console.log('Tömb keverése: '+Arr2.sort(()=>(0.5 - Math.random()) > 0 ? 1:-1))
+        
+        //Sorting arrays filled with objects
+        let users = [{ id:1 , name: "John", age: 30, car: null },
+
+                     { id:2 , name: "Carlos", age: 25, car: "Toyota" },
+
+                     { id:3 , name: "Brendan", age: 65, car: "BMW" },
+
+                     { id:4 , name: "Carol", age: 34, car: "Mercedez" },
+
+                     { id:5, name: "Conway", age: 36, car: "Mazda" }]
+        
+        console.log("Kor alapján történő szortírozás: ");
+        console.log(users.sort((a,b)=> a.age - b.age));
+
+        console.log('Név alapján történő szortírozás: ')
+        console.log(users.sort((a,b)=>a.name > b.name ? 1 : -1));
+
+
+    </script>
+</body>
+</html>

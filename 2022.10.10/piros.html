@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Hol a piros</title>
+
+</head>
+<style>
+    .container{
+        height: 90vh;
+    }
+    input[type="number"]{
+        width: 100%;
+    }
+    .green{
+        background-color: green;
+    }
+    .red{
+        background-color: red;
+    }
+</style>
+<body>
+    <div class="container bg-light shadow">
+        <h4 class="text-center">Hol a Piros</h4>
+        <form action="" class="d-flex justify-content-center flex-column">
+            <label for="rows" class="text-center">Adja meg a négyzetrács méretét</label>
+            <label id="clicks" class="text-center h4 "></label>
+            <input type="number" name="rows" id="rows" class="form-control">
+            <button class="btn btn-success" onclick="Start(event)"> Játék indítás</button>
+            <button class="btn btn-danger"> Új játék</button>
+        </form>
+        <div class="row d-flex justify-content-center">
+            <table onclick="GetData(event)">
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        let randx;
+        let randy;
+        let clicks = 0;
+        let Start = (e)=>{
+            e.preventDefault();
+            console.log("Indul")
+
+            let size = +document.getElementById("rows").value;
+            
+            if(size > 2){
+                randx = Math.floor(Math.random()*size);
+                randy = Math.floor(Math.random()*size);
+
+                let table = document.querySelector('tbody');
+                table.innerText = "";
+                for(let i = 0;i<size;i++){
+                    let row = table.insertRow(-1);
+                    row.classList.add("bg-dark");
+                    for(let j = 0;j<size;j++){
+                        let cell = row.insertCell(-1);
+                        cell.style.border = '1px solid black';
+                        if(window.innerWidth < window.innerHeight){
+                            cell.style.width = (window.innerWidth / (size+5))+"px";
+                            cell.style.height = cell.style.width;
+                        }
+                        else{
+                            cell.style.height = (window.innerHeight / (size+5))+"px";
+                            cell.style.width = cell.style.height;
+                        }
+                    }
+                }
+            //console.log(randx,randy)
+            }
+
+        }
+        let GetData = (e) =>{
+            
+            if(e.target.tagName == "TD"){
+                let coordx = e.target.cellIndex;
+                let coordy = e.target.parentNode.rowIndex;
+                console.log(coordx,coordy)
+                if(randx == coordx && randy == coordy){
+                e.target.classList.add("green")
+                alert("Nyert!");
+                document.querySelector("table").removeAttribute("onclick");
+                }
+                else{
+                    if(!e.target.classList.contains("red")){
+                    clicks++;
+                    document.getElementById("clicks").innerHTML = "Kattintások: "+clicks;
+                }
+                e.target.classList.add("red");
+                
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>

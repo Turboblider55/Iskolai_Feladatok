@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    label,input{
+        margin: 5px;
+    }
+</style>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>Személyes adatok</legend>
+                <label for="nev">Név: </label>
+                <input type="text" name="nev" id="nev" value="Írd be a neved"><br>
+                <label for="pass">Jelszó: </label>
+                <input type="password" name="pass" id="pass"><br>
+                <label for="email">E-mail:</label>
+                <input type="text" name="email" id="email"><br>
+                <label for="birth">Születési év:</label>
+                <input type="text"><br>
+                <label for="date">Születési dátum: </label>
+                <input type="date" name="date" id="date"><br>
+        </fieldset>
+        <fieldset>
+            <legend>Nelyvtudás,iskolai végzettség</legend>
+            <label for="lang">Nyelvtudás: </label><br>
+            <input type="checkbox" name="lang" id="hun"  checked title=""><label for="hun">Magyar</label><br>
+            <input type="checkbox" name="lang" id="ger"><label for="ger">Német</label><br>
+            <input type="checkbox" name="lang" id="eng"><label for="eng">Angol</label><br>
+            <input type="checkbox" name="lang" id="ect"><label for="ect">Egyéb</label><br>
+            <label for="highest">Legmagasabb iskolai végzettség</label><br>
+            <input type="radio" name="highest" id="min" ><label for="min">Alapfokú</label><br>
+            <input type="radio" name="highest" id="mid" ><label for="mid">Középfokú</label><br>
+            <input type="radio" name="highest" id="max" ><label for="max">Felsőfokú</label><br>
+
+        </fieldset>
+        <fieldset>
+            <h3>Válasz ki egy ágazatot</h3>
+            <select name="" id="">
+                <option value="info">Informatika</option>
+                <option value="mech">Mechatronika</option>
+                <option value="hegg">Heggesztő</option>
+            </select><br>
+            <textarea name="" id="" cols="30" rows="10"></textarea><br>
+            <label for="know">Értékeld a szaktudásodat a 10-es skálán</label><br>
+            <input type="range" name="know" id="know" min="0" max="10">
+        </fieldset>
+        <input type="button" value="Küldés">
+    </form>
+</body>
+</html>

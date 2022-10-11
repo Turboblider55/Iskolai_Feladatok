@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md text-center text-primary h1 m-3">Our Tours</div>
+        </div>
+    </div>
+    <script>
+
+
+
+        //https://course-api.com/react-tours-project
+        let getData = async (url)=>{
+            let response = await fetch(url);
+            let data = await response.json();
+            console.log(data);
+            render(data);
+        }
+        let render = (data)=>{
+            let container = document.querySelector('.container');
+            let row = document.createElement('div');
+            row.classList.add('row');
+            for(let i of data){
+                let col = document.createElement('div');
+                col.classList.add('col');
+                let card = cardText(i.image,i.name,i.info.split(" ").splice(0,8),i.price);
+                col.innerHTML = card;
+                row.appendChild(col);
+            }
+            container.appendChild(row);
+        }
+        let cardText = (img,title,text1,text2)=>{
+            return `
+            <div class="card">
+            <img src="${img}" class="card-img-top img-fluid">
+            <div class="card-body">
+                <h5 class="card-title">${title}</h5>
+                <p class="card-text">${text1} <a href="#" >read more</a><br> <br>Price: $${text2}</p>
+                
+            </div>
+            </div>
+            `
+        }
+        getData('https://course-api.com/react-tours-project');
+    </script>
+</body>
+</html>

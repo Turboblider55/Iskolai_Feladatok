@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aszinkronitás</title>
+</head>
+<style>
+    .box{
+        background-color: gray;
+        margin: 5px;
+        padding: 5px;
+        border: 2px solid black;
+        color: white;
+        font-weight: bold;
+        width: 300px;
+    }
+    h4{
+        text-align: center;
+    }
+</style>
+<body>
+    <div>
+
+    </div>
+    <script>
+        // console.log(1);
+        // setTimeout(()=>{
+        //     console.log(2);
+        // },1000)
+        // console.log(3);
+
+        const getData = async (url)=>{
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log(data);
+            render2(data)
+        }
+        let render = (dat)=>{
+            let img = document.createElement('img');
+            img.src = dat.avatar_url;
+            let p = document.createElement('p');
+            p.innerHTML = dat.login;
+            let container = document.querySelector('div');
+            container.appendChild(img);
+            container.appendChild(p);
+        }
+        let render2 = (dat)=>{
+            let container = document.querySelector('div')
+            let header = document.createElement('h2');
+            header.innerHTML = dat.squadName;
+            container.appendChild(header);
+            for(let i of dat.members){
+                let container2 = document.createElement('div');
+                container2.classList.add('box');
+                let name = document.createElement('h4');
+                let age = document.createElement('h6');
+                age.innerHTML = 'age: '+i.age;
+                let list = document.createElement('ul');
+                for(let j of i.powers){
+                    let li = document.createElement('li')
+                    li.innerHTML = j;
+                    list.appendChild(li);
+                }
+                name.innerHTML = i.name;
+                container2.appendChild(name);
+                container2.appendChild(age);
+                container2.appendChild(list);
+                container.appendChild(container2);
+            }
+        }
+        // https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json
+        getData('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+
+
+    </script>
+</body>
+</html>

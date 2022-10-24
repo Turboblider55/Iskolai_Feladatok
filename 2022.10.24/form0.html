@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <title>Form elemek</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Személyes adatok</h1>
+        <form >
+            <div class="row bg-light p-2">
+                <div class="col-md-4 col-6 border">
+                    <input type="text" id="name" class="form-control mb-2" placeholder="név">
+                    <input type="number" id="birthyear" required  class="form-control mb-2" placeholder="születési év">
+                    <input type="email" id="mail" required class="form-control mb-2" placeholder="email">
+                    <input type="password" id="password" class="form-control mb-2" placeholder="jelszó">
+                    <input type="date" id="birthdate" class="form-control mb-2" placeholder="születési dátum">
+                    <input type="range" id='range' onchange="showValue(this)" class="form-control mb-2" min="0" max="10" step="1" value="5">
+                    <div id="pontErtek"></div>
+                </div>
+                <div class="col-md-4 col-6 border">
+                    <p>Nyelvtudás:</p>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="checkbox" name="nyelv" value="magyar" id="magyar">
+                        <label class="form-check-label" for="magyar"> magyar</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="nyelv" value="német" id="nemet">
+                        <label class="form-check-label" for="nemet"> német</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="nyelv" value="angol" id="angol">
+                        <label class="form-check-label" for="angol">angol </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="nyelv" value="Egyéb" id="Egyeb">
+                        <label class="form-check-label" for="Egyeb"> Egyéb </label>
+                      </div>
+
+                      <hr>
+                      <p>Legmagasabb iskolai végzettség:</p>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="vegzettseg" id="alap" value="alap" >
+                        <label class="form-check-label" for="alap"> alapfokú</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="vegzettseg" id="kozep" value="kozep">
+                        <label class="form-check-label" for="kozep">középfokú</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="vegzettseg" id="felso" value="felso" >
+                        <label class="form-check-label" for="felso">felsőfokú</label>
+                      </div>
+
+                </div>
+
+                <div class="col-md-4 col-6">
+                    <p>Válassz egy ágazatot:</p>
+                    <select  class="custom-select mb-3" id="agazat">
+                        <option value="0">válassz...</option>
+                        <option value="web">webfejlesztő</option>
+                        <option value="szoft">szoftverfejlesztő</option>
+                        <option value="rend">rendszergazda</option>
+                        <option value="prog">programozó</option>  
+                    </select>
+                    <textarea class="form-control"  cols="30" rows="10" placeholder="mond el a véleményed..."></textarea>
+                </div>
+           
+        </div>
+        <div class="row">
+          <input  class="btn btn-primary" type="button" value="mentés" onclick="getData()"> 
+        </div>
+         </form>
+        <div id="errormsg" class="text-danger">
+          
+        </div>
+         
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
